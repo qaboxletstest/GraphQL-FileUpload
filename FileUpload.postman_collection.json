@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "a61e4ace-1b10-4da8-88bc-c1b65975f1c0",
+		"name": "FileUpload",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Single File Upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "operations",
+							"value": "{\"query\":\"mutation($file:Upload!) {\\n  singleUploadFile(file: $file){url}\\n}\"}",
+							"type": "text"
+						},
+						{
+							"key": "map",
+							"value": "{\"0\": [\"variables.file\"]}",
+							"type": "text"
+						},
+						{
+							"key": "0",
+							"type": "file",
+							"src": "/C:/Training/Postman B2/file-upload-app/appfiles/Yey.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Multiple File Upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "operations",
+							"value": "{\"query\":\"mutation($files:[Upload!]!) {multipleUploadFile(files: $files){url}}\", \"variables\": { \"files\": [null, null] }}",
+							"type": "text"
+						},
+						{
+							"key": "map",
+							"value": "{\"0\": [\"variables.files.0\"], \"1\": [\"variables.files.1\"]}",
+							"type": "text"
+						},
+						{
+							"key": "0",
+							"type": "file",
+							"src": "/C:/Training/Postman B2/test1.png"
+						},
+						{
+							"key": "1",
+							"type": "file",
+							"src": "/C:/Training/Postman B2/file-upload-app/appfiles/Yey.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
